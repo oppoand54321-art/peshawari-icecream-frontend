@@ -6,18 +6,31 @@ function App() {
   const [mode, setMode] = useState("customer");
 
   return (
-    <div>
-      <div style={{ padding: 10, background: "#111", color: "#fff" }}>
+    <div style={{ width: "100%", overflowX: "hidden" }}>
+      <div
+        style={{
+          padding: 10,
+          background: "#111",
+          color: "#fff",
+          width: "100%",
+          boxSizing: "border-box",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 10
+        }}
+      >
         <button onClick={() => setMode("customer")}>
           Customer View
         </button>
 
-        <button onClick={() => setMode("admin")} style={{ marginLeft: 10 }}>
+        <button onClick={() => setMode("admin")}>
           Admin View
         </button>
       </div>
 
-      {mode === "customer" ? <CustomerView /> : <AdminApp />}
+      <div style={{ width: "100%", overflowX: "hidden" }}>
+        {mode === "customer" ? <CustomerView /> : <AdminApp />}
+      </div>
     </div>
   );
 }
