@@ -107,7 +107,6 @@ function CustomerView() {
               }
               style={{ display: "block", margin: 10, padding: 10, width: 300 }}
             />
-
             <textarea
               placeholder="Address"
               value={checkoutData.address}
@@ -175,7 +174,8 @@ function CustomerView() {
                 We use carefully selected ingredients to ensure every scoop delivers rich flavor.
               </p>
             </div>
-   <div style={styles.box}>
+
+            <div style={styles.box}>
               <h3 style={styles.boxTitle}>👨‍👩‍👧 Made for Every Family Moment</h3>
               <p style={styles.boxText}>
                 From kids to grandparents, our ice cream brings people together.
@@ -202,7 +202,6 @@ function CustomerView() {
       </div>
     );
   }
-
   return (
     <div style={styles.menuPage}>
       <button style={styles.backBtn} onClick={() => setPage("home")}>
@@ -260,36 +259,61 @@ function CustomerView() {
 
 const styles = {
   home: { minHeight: "100vh", fontFamily: "Arial", background: "#fff7fb" },
-  hero: { display: "flex", height: "30vh", background: "#2c1138" },
+
+  hero: {
+    display: "flex",
+    flexWrap: "wrap",
+    minHeight: "30vh",
+    background: "#2c1138"
+  },
+
   leftHero: {
-    width: "40%",
+    width: "100%",
+    maxWidth: "420px",
     padding: 25,
     color: "white",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
+    margin: "0 auto"
   },
+
   rightHero: {
-    width: "60%",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "relative"
+    position: "relative",
+    minHeight: 220
   },
+
   heroLogo: {
     position: "absolute",
-    top: 15,
-    right: 20,
-    width: 85,
-    height: 85,
+    top: 10,
+    right: 10,
+    width: 65,
+    height: 65,
     borderRadius: "50%",
     objectFit: "cover",
     background: "white",
     padding: 4
   },
-  slideImg: { width: "95%", height: "95%", objectFit: "contain" },
-  title: { fontSize: 34, marginBottom: 10 },
-  subtitle: { fontSize: 18 },
+
+  slideImg: {
+    width: "95%",
+    height: "95%",
+    objectFit: "contain"
+  },
+
+  title: {
+    fontSize: "clamp(24px, 5vw, 34px)",
+    marginBottom: 10
+  },
+
+  subtitle: {
+    fontSize: "clamp(14px, 3vw, 18px)"
+  },
+
   orderBtn: {
     marginTop: 20,
     padding: "12px 24px",
@@ -313,20 +337,31 @@ const styles = {
 
   featuresGrid: {
     display: "grid",
-    gridTemplateColumns: "repeat(2,1fr)",
-    gap: 30
+    gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))",
+    gap: 20
   },
 
   box: {
     background: "rgba(255,255,255,0.88)",
     backdropFilter: "blur(4px)",
-    padding: 40,
+    padding: 22,
     borderRadius: 25,
-    boxShadow: "0 6px 18px rgba(0,0,0,0.12)"
+    boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+    width: "100%",
+    boxSizing: "border-box"
   },
 
-  boxTitle: { fontSize: 30, marginBottom: 15, color: "#6a1b4d" },
-  boxText: { fontSize: 18, lineHeight: 1.7 },
+  boxTitle: {
+    fontSize: "clamp(20px, 4vw, 30px)",
+    marginBottom: 15,
+    color: "#6a1b4d"
+  },
+
+  boxText: {
+    fontSize: "clamp(14px, 3vw, 18px)",
+    lineHeight: 1.7
+  },
+
   footer: {
     marginTop: 40,
     textAlign: "center",
@@ -334,6 +369,7 @@ const styles = {
     padding: 30,
     borderRadius: 20
   },
+
   mapBtn: {
     marginTop: 15,
     padding: "10px 20px",
@@ -344,9 +380,23 @@ const styles = {
   menuPage: { padding: 20 },
   backBtn: { padding: "10px 16px", border: "none", borderRadius: "20px" },
   categoryBar: { display: "flex", gap: 10, margin: "20px 0", flexWrap: "wrap" },
-  grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: 12 },
-  card: { background: "white", padding: 10, borderRadius: 10, textAlign: "center" },
-  image: { width: "100%", height: 110, objectFit: "cover", borderRadius: 8 },
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))",
+    gap: 12
+  },
+  card: {
+    background: "white",
+    padding: 10,
+    borderRadius: 10,
+    textAlign: "center"
+  },
+  image: {
+    width: "100%",
+    height: 110,
+    objectFit: "cover",
+    borderRadius: 8
+  },
   cartBtn: {
     marginTop: 8,
     padding: "8px 12px",
