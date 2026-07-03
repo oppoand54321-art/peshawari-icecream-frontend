@@ -5,7 +5,9 @@ import CustomerView from "./CustomerView";
 function App() {
   const [products, setProducts] = useState(initialProducts);
   const [selectedCategory, setSelectedCategory] = useState("Ice Cream");
-  const [activePage, setActivePage] = useState("products");
+
+  // 🔥 IMPORTANT FIX: default customer view
+  const [activePage, setActivePage] = useState("customer");
 
   const handleDelete = (id) => {
     setProducts(products.filter((item) => item.id !== id));
@@ -56,46 +58,48 @@ function App() {
           padding: activePage === "customer" ? "0" : "20px"
         }}
       >
-        {activePage !== "customer" && (
-          <h1>Peshawari Ice Cream Admin Board</h1>
-        )}
-
-        {activePage === "dashboard" && <h2>Dashboard Page</h2>}
-        {activePage === "orders" && <h2>Orders Page</h2>}
-        {activePage === "customers" && <h2>Customers Page</h2>}
-        {activePage === "settings" && <h2>Settings Page</h2>}
-
-        {activePage === "products" && (
+        {activePage === "customer" ? (
+          <CustomerView />
+        ) : (
           <>
-            <div style={styles.categoryBar}>
-              <button onClick={() => setSelectedCategory("Ice Cream")}>🍦 Ice Cream</button>
-              <button onClick={() => setSelectedCategory("Shakes")}>🥤 Shakes</button>
-              <button onClick={() => setSelectedCategory("Fast Food")}>🍔 Fast Food</button>
-              <button onClick={() => setSelectedCategory("Juices")}>🧃 Juices</button>
-              <button onClick={() => setSelectedCategory("Chaat")}>🌮 Chaat</button>
-            </div>
+            <h1>Peshawari Ice Cream Admin Board</h1>
 
-            <div style={styles.grid}>
-              {filteredProducts.map((item) => (
-                <div key={item.id} style={styles.card}>
-                  <h3>{item.name}</h3>
-                  <p>Rs. {item.price}</p>
+            {activePage === "dashboard" && <h2>Dashboard Page</h2>}
+            {activePage === "orders" && <h2>Orders Page</h2>}
+            {activePage === "customers" && <h2>Customers Page</h2>}
+            {activePage === "settings" && <h2>Settings Page</h2>}
 
-                  <div style={styles.actions}>
-                    <button style={styles.edit} onClick={() => handleEdit(item.id)}>
-                      Edit
-                    </button>
-                    <button style={styles.delete} onClick={() => handleDelete(item.id)}>
-                      Delete
-                    </button>
-                  </div>
+            {activePage === "products" && (
+              <>
+                <div style={styles.categoryBar}>
+                  <button onClick={() => setSelectedCategory("Ice Cream")}>🍦 Ice Cream</button>
+                  <button onClick={() => setSelectedCategory("Shakes")}>🥤 Shakes</button>
+                  <button onClick={() => setSelectedCategory("Fast Food")}>🍔 Fast Food</button>
+                  <button onClick={() => setSelectedCategory("Juices")}>🧃 Juices</button>
+                  <button onClick={() => setSelectedCategory("Chaat")}>🌮 Chaat</button>
                 </div>
-              ))}
-            </div>
+
+                <div style={styles.grid}>
+                  {filteredProducts.map((item) => (
+                    <div key={item.id} style={styles.card}>
+                      <h3>{item.name}</h3>
+                      <p>Rs. {item.price}</p>
+
+                      <div style={styles.actions}>
+                        <button style={styles.edit} onClick={() => handleEdit(item.id)}>
+                          Edit
+                        </button>
+                        <button style={styles.delete} onClick={() => handleDelete(item.id)}>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </>
         )}
-
-        {activePage === "customer" && <CustomerView />}
       </div>
     </div>
   );
