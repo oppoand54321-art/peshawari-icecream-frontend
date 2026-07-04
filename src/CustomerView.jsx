@@ -306,11 +306,11 @@ const styles = {
   },
 
   title: {
-  fontSize: "clamp(30px, 6vw, 42px)", // پہلے سے بڑا فونٹ
+  fontSize: "clamp(32px, 6.5vw, 46px)", // پہلے سے تھوڑا بڑا
   marginBottom: 10,
-  color: "#FFD700",                   // گولڈ/ییلو کلر
-  WebkitTextStroke: "2px #cc0000",    // ریڈ بارڈر
-  fontWeight: "bold"
+  color: "#FF0000",                     // شوخ ریڈ
+  fontWeight: "900",
+  textAlign: "center"
 },
 
   subtitle: {
