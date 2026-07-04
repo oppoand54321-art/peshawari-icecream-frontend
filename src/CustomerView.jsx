@@ -306,9 +306,12 @@ const styles = {
   },
 
   title: {
-    fontSize: "clamp(24px, 5vw, 34px)",
-    marginBottom: 10
-  },
+  fontSize: "clamp(30px, 6vw, 42px)", // پہلے سے بڑا فونٹ
+  marginBottom: 10,
+  color: "#FFD700",                   // گولڈ/ییلو کلر
+  WebkitTextStroke: "2px #cc0000",    // ریڈ بارڈر
+  fontWeight: "bold"
+},
 
   subtitle: {
     fontSize: "clamp(14px, 3vw, 18px)"
